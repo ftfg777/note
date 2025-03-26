@@ -19,14 +19,34 @@ permalink: /
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
   {% for note in recent_notes limit: 5 %}
     <div class="note-card">
-     <pre>{{ note | inspect }}</pre>
-      <span class="note-date">{{ note.last_modified_at | date: "%Y-%m-%d" }}</span>
-      <a class="internal-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
-    </div>
-  {% endfor %}
-</div>
+      <!-- 제목 -->
+      <h2 class="note-title">
+        <a href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
+      </h2>
 
-<button id="toggle-dark-mode">🌙 다크 모드</button>
+      <!-- 내용 (4줄까지만 보이고 그 이후는 ...) -->
+      <p class="note-content">
+        {{ note.content | strip_html | truncatewords: 40, "..." }}
+      </p>
+
+      <!-- 작성 날짜 -->
+      <p class="note-date">
+        📅 {{ note.last_modified_at | date: "%Y-%m-%d" }}
+      </p>
+
+      <!-- 태그 -->
+      {% if note.tags %}
+        <div class="note-tags">
+          {% for tag in note.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+{% endfor %}
+
+</div>
 
 <style>
   /* 기본 스타일 */
@@ -50,72 +70,81 @@ permalink: /
     border-radius: 8px;
     text-align: center;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
 
   /* 최근 노트 리스트 */
   .recent-notes {
     margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
   }
 
   .note-card {
     background: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
+    width: 100%;
+    max-width: 500px;
   }
 
   .note-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
+  /* 제목 스타일 */
+  .note-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .note-title a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .note-title a:hover {
+    color: #007bff;
+  }
+
+  /* 내용 스타일 (4줄 이후 ... 표시) */
+  .note-content {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+    max-height: 6em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+  }
+
+  /* 날짜 스타일 */
   .note-date {
     font-size: 0.9em;
-    color: gray;
+    color: #888;
+    margin-bottom: 10px;
   }
 
-  /* 버튼 스타일 */
-  #toggle-dark-mode {
-    margin-top: 20px;
-    padding: 10px 15px;
-    border: none;
-    background-color: #007acc;
-    color: white;
+  /* 태그 스타일 */
+  .note-tags {
+    margin-top: 10px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.8em;
     border-radius: 5px;
-    cursor: pointer;
-  }
-
-  #toggle-dark-mode:hover {
-    background-color: #005f99;
-  }
-
-  /* 다크 모드 스타일 */
-  body.dark-mode {
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
-
-  .dark-mode a {
-    color: #4dabf7;
-  }
-
-  .dark-mode .note-card {
-    background: #2a2a2a;
-    box-shadow: none;
-  }
-
-  .dark-mode #toggle-dark-mode {
-    background-color: #facc15;
-    color: black;
+    margin-right: 5px;
   }
 </style>
-
-<script>
-  const toggleButton = document.getElementById('toggle-dark-mode');
-  toggleButton.addEventListener('click', function () {
-    document.body.classList.toggle('dark-mode');
-  });
-</script>
