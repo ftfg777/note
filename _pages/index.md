@@ -5,11 +5,9 @@ id: home
 permalink: /
 ---
 
-# Welcome! 🌱
-
 <div class="welcome-card">
-  <h1>반갑습니다 👋</h1>
-  <p>이런 누추한 곳에 오시다니 환영합니다</p>
+  <h1>Blast Off into My Code Galaxy! 🚀</h1>
+  <p>나만의 작은 기록 공간</p>
 </div>
 
 <strong>📌 최근 업데이트된 노트</strong>
@@ -64,11 +62,8 @@ permalink: /
 
   /* 웰컴 카드 - 애플 스타일 */
 .welcome-card {
-  background: #f7f7f7; /* 부드러운 그레이톤 */
   padding: 2em 2.5em;
-  border-radius: 20px; /* 둥근 모서리 */
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 은은한 그림자 */
   margin-bottom: 20px;
   max-width: 600px; /* 카드 크기 제한 */
   margin-left: auto;
