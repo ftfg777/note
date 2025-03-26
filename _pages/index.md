@@ -7,7 +7,6 @@ permalink: /
 
 <div class="welcome-card">
   <h1>Blast Off into My Code Galaxy! 🚀</h1>
-  <p>나만의 작은 기록 공간</p>
 </div>
 
 <strong>📌 최근 업데이트된 노트</strong>
@@ -55,19 +54,12 @@ permalink: /
     padding: 20px;
   }
 
-  h1 {
-    color: #2a7ae2;
-    text-align: center;
-  }
-
   /* 웰컴 카드 - 애플 스타일 */
 .welcome-card {
-  padding: 2em 2.5em;
-  text-align: center;
+  padding: 2em 0em;
+  text-align: left;
   margin-bottom: 20px;
-  max-width: 600px; /* 카드 크기 제한 */
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 800px; /* 카드 크기 제한 */
   transition: transform 0.2s ease-in-out;
 }
 
@@ -80,7 +72,7 @@ permalink: /
   font-size: 2em;
   font-weight: 600;
   color: #1d1d1f; /* 애플 스타일의 다크 그레이 */
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* 웰컴 카드 내용 */
