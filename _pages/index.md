@@ -5,35 +5,15 @@ id: home
 permalink: /
 ---
 
-<button id="toggle-dark-mode">🌙 다크 모드</button>
-
-<script>
-  const toggleButton = document.getElementById('toggle-dark-mode');
-  toggleButton.addEventListener('click', function () {
-    document.body.classList.toggle('dark-mode');
-  });
-</script>
-
 # Welcome! 🌱
 
-<p style="padding: 3em 1em; background: #f5f7ff; border-radius: 4px;">
-  Take a look at <span style="font-weight: bold">[[Your first note]]</span> to get started on your exploration.
-</p>
+<div class="welcome-card">
+  <h1>반가워! 👋</h1>
+  <p>이곳은 나의 작은 기록 공간이야.</p>
+  <p>시작하려면 <strong>[[Your first note]]</strong>를 확인해봐!</p>
+</div>
 
-This digital garden template is free, open-source, and [available on GitHub here](https://github.com/maximevaillancourt/digital-garden-jekyll-template).
-
-The easiest way to get started is to read this [step-by-step guide explaining how to set this up from scratch](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll).
-
-<strong>Recently updated notes</strong>
-
-<ul>
-  {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
-  {% for note in recent_notes limit: 5 %}
-    <li>
-      {{ note.last_modified_at | date: "%Y-%m-%d" }} — <a class="internal-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+<strong>📌 최근 업데이트된 노트</strong>
 
 <div class="recent-notes">
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
@@ -45,12 +25,34 @@ The easiest way to get started is to read this [step-by-step guide explaining ho
   {% endfor %}
 </div>
 
+<button id="toggle-dark-mode">🌙 다크 모드</button>
+
 <style>
-  .wrapper {
-    max-width: 46em;
+  /* 기본 스타일 */
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
   }
 
-   .recent-notes {
+  h1 {
+    color: #2a7ae2;
+    text-align: center;
+  }
+
+  /* 환영 메시지 카드 */
+  .welcome-card {
+    background: linear-gradient(135deg, #eef2ff, #c7d2fe);
+    padding: 2em;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 최근 노트 리스트 */
+  .recent-notes {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -62,22 +64,57 @@ The easiest way to get started is to read this [step-by-step guide explaining ho
     padding: 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .note-card:hover {
+    transform: scale(1.03);
   }
 
   .note-date {
     font-size: 0.9em;
     color: gray;
   }
-  .dark-mode .note-card {
-  background: #2a2a2a;
-  box-shadow: none;
-  }
-  body.dark-mode {
-  background-color: #1e1e1e;
-  color: #ffffff;
-}
 
-.dark-mode a {
-  color: #4dabf7;
-}
+  /* 버튼 스타일 */
+  #toggle-dark-mode {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #007acc;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #toggle-dark-mode:hover {
+    background-color: #005f99;
+  }
+
+  /* 다크 모드 스타일 */
+  body.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+
+  .dark-mode a {
+    color: #4dabf7;
+  }
+
+  .dark-mode .note-card {
+    background: #2a2a2a;
+    box-shadow: none;
+  }
+
+  .dark-mode #toggle-dark-mode {
+    background-color: #facc15;
+    color: black;
+  }
 </style>
+
+<script>
+  const toggleButton = document.getElementById('toggle-dark-mode');
+  toggleButton.addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
