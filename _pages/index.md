@@ -74,77 +74,88 @@ permalink: /
   }
 
   /* 최근 노트 리스트 */
-  .recent-notes {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-  }
+.recent-notes {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개 */
+  gap: 15px;
+  justify-content: center;
+}
 
-  .note-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    width: 100%;
-    max-width: 500px;
-  }
+/* 카드 스타일 */
+.note-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 230px; /* 높이 고정 */
+}
 
-  .note-card:hover {
-    transform: scale(1.02);
-  }
+.note-card:hover {
+  transform: scale(1.03);
+}
 
-  /* 제목 스타일 */
-  .note-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+/* 제목 스타일 */
+.note-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
 
-  .note-title a {
-    text-decoration: none;
-    color: #333;
-  }
+.note-title a {
+  text-decoration: none;
+  color: #333;
+}
 
-  .note-title a:hover {
-    color: #007bff;
-  }
+.note-title a:hover {
+  color: #007bff;
+}
 
-  /* 내용 스타일 (4줄 이후 ... 표시) */
-  .note-content {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.5;
-    max-height: 6em;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    margin-bottom: 10px;
-  }
+/* 내용 스타일 */
+.note-content {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.5;
+  max-height: 4.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  flex-grow: 1; /* 남는 공간 차지 */
+}
 
-  /* 날짜 스타일 */
-  .note-date {
-    font-size: 0.9em;
-    color: #888;
-    margin-bottom: 10px;
-  }
+/* 날짜 스타일 (하단 고정) */
+.note-date {
+  font-size: 0.8em;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: auto;
+}
 
-  /* 태그 스타일 */
-  .note-tags {
-    margin-top: 10px;
-  }
+/* 날짜 아이콘 */
+.note-date-icon {
+  font-size: 0.9em; /* 아이콘 크기 살짝 줄임 */
+  margin-right: 5px;
+}
 
-  .tag {
-    display: inline-block;
-    background: #007bff;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 0.8em;
-    border-radius: 5px;
-    margin-right: 5px;
-  }
+/* 태그 스타일 */
+.note-tags {
+  margin-top: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.7em;
+  border-radius: 5px;
+  margin-right: 4px;
+}
 </style>
