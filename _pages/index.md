@@ -8,8 +8,8 @@ permalink: /
 # Welcome! 🌱
 
 <div class="welcome-card">
-  <h1>반가워! 👋</h1>
-  <p>이곳은 나의 작은 기록 공간이야.</p>
+  <h1>반갑습니다 👋</h1>
+  <p>이런 누추한 곳에 오시다니 환영합니다</p>
   <p>시작하려면 <strong>[[Your first note]]</strong>를 확인해봐!</p>
 </div>
 
@@ -19,6 +19,7 @@ permalink: /
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
   {% for note in recent_notes limit: 5 %}
     <div class="note-card">
+     <pre>{{ note | inspect }}</pre>
       <span class="note-date">{{ note.last_modified_at | date: "%Y-%m-%d" }}</span>
       <a class="internal-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
     </div>
