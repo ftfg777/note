@@ -10,14 +10,13 @@ permalink: /
 <div class="welcome-card">
   <h1>반갑습니다 👋</h1>
   <p>이런 누추한 곳에 오시다니 환영합니다</p>
-  <p>시작하려면 <strong>[[Your first note]]</strong>를 확인해봐!</p>
 </div>
 
 <strong>📌 최근 업데이트된 노트</strong>
 
 <div class="recent-notes">
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
-  {% for note in recent_notes limit: 5 %}
+  {% for note in recent_notes limit: 9 %}
     <div class="note-card">
       <!-- 제목 -->
       <h2 class="note-title">
@@ -31,7 +30,7 @@ permalink: /
 
       <!-- 작성 날짜 -->
       <p class="note-date">
-        📅 {{ note.last_modified_at | date: "%Y-%m-%d" }}
+        📅  {{ note.last_modified_at | date: "%Y-%m-%d" }}
       </p>
 
       <!-- 태그 -->
@@ -63,15 +62,39 @@ permalink: /
     text-align: center;
   }
 
-  /* 환영 메시지 카드 */
-  .welcome-card {
-    background: linear-gradient(135deg, #eef2ff, #c7d2fe);
-    padding: 2em;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
+  /* 웰컴 카드 - 애플 스타일 */
+.welcome-card {
+  background: #f7f7f7; /* 부드러운 그레이톤 */
+  padding: 2em 2.5em;
+  border-radius: 20px; /* 둥근 모서리 */
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 은은한 그림자 */
+  margin-bottom: 20px;
+  max-width: 600px; /* 카드 크기 제한 */
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.welcome-card:hover {
+  transform: scale(1.02); /* 살짝 확대 효과 */
+}
+
+/* 웰컴 카드 제목 */
+.welcome-card h1 {
+  font-size: 2em;
+  font-weight: 600;
+  color: #1d1d1f; /* 애플 스타일의 다크 그레이 */
+  margin-bottom: 10px;
+}
+
+/* 웰컴 카드 내용 */
+.welcome-card p {
+  font-size: 1.1em;
+  color: #4a4a4a; /* 차분한 다크 그레이 */
+  line-height: 1.6;
+  font-weight: 400;
+}
 
   /* 최근 노트 리스트 */
 .recent-notes {
