@@ -9,14 +9,13 @@ permalink: /
   <h1>Blast Off into My Code Galaxy! 🚀</h1>
 </div>
 
-<pre>{{ note | inspect }}</pre>
-
 <strong>📌 최근 업데이트된 노트</strong>
 
 <div class="recent-notes">
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
   {% for note in recent_notes limit: 9 %}
     <div class="note-card">
+        <pre>{{ note | inspect }}</pre>
       <!-- 제목 -->
       <h2 class="note-title">
         <a href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
