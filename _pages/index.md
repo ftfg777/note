@@ -113,6 +113,11 @@ permalink: /
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;  /* 2줄로 제한 */
+  -webkit-box-orient: vertical;
 }
 
 .note-title a {
