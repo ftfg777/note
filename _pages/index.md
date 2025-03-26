@@ -9,6 +9,8 @@ permalink: /
   <h1>Blast Off into My Code Galaxy! 🚀</h1>
 </div>
 
+<pre>{{ note | inspect }}</pre>
+
 <strong>📌 최근 업데이트된 노트</strong>
 
 <div class="recent-notes">
