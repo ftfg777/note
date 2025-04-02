@@ -17,7 +17,7 @@ permalink: /
     <div class="note-card">
       <!-- 제목 -->
       <h2 class="note-title">
-        <a href="{{ site.baseurl }}{{ note.url }}">{{ note.title | truncatewords: 18, "..." }}</a>
+        <a href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
       </h2>
 
       <!-- 내용 (4줄까지만 보이고 그 이후는 ...) -->
